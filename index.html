@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Clover Ge | ហាងលក់ផលិតផល</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #3d5240;
+      --green-dark: #2a3a2c;
+      --green-light: #546857;
+      --cream: #f0ebe0;
+      --cream-dark: #ddd6c5;
+      --gold: #c9a96e;
+      --white: #faf8f4;
+      --text: #1e2b1f;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Kantumruy Pro', sans-serif !important;}
+
+    body {
+      font-family: 'Kantumruy Pro', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      max-width: 430px;
+      margin: 0 auto;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP NAV ── */
+    .nav {
+      background: var(--green-dark);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--cream);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .nav-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--cream-dark);
+      opacity: .5;
+    }
+    .nav-name {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: var(--cream);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .nav-icons { display: flex; gap: 18px; align-items: center; }
+    .nav-icons button {
+      background: none; border: none; cursor: pointer;
+      color: var(--cream); font-size: 20px; padding: 2px;
+      position: relative;
+    }
+    .cart-badge {
+      position: absolute; top: -4px; right: -6px;
+      background: var(--gold); color: var(--green-dark);
+      font-size: 9px; font-weight: 700;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: sans-serif;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green);
+      padding: 36px 24px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(201,169,110,.12) 0%, transparent 70%);
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 10px; letter-spacing: 2px;
+      color: var(--gold); text-transform: uppercase;
+      border: 1px solid rgba(201,169,110,.4);
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; color: var(--cream);
+      line-height: 1.15; font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p {
+      font-size: 13px; color: rgba(240,235,224,.75);
+      line-height: 1.7; margin-bottom: 22px;
+    }
+    .hero-btns { display: flex; gap: 10px; }
+    .btn-primary {
+      background: var(--gold); color: var(--green-dark);
+      border: none; padding: 12px 22px;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 13px; font-weight: 600;
+      border-radius: 4px; cursor: pointer;
+      flex: 1; letter-spacing: .5px;
+      transition: background .2s;
+    }
+    .btn-primary:hover { background: #d4b07a; }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream); border: 1px solid rgba(240,235,224,.4);
+      padding: 12px 18px; font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 13px; border-radius: 4px; cursor: pointer;
+      transition: border-color .2s;
+    }
+    .btn-outline:hover { border-color: var(--cream); }
+
+    /* ── LOCATION STRIP ── */
+    .location-strip {
+      background: var(--green-dark);
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      font-size: 12px; color: var(--cream-dark);
+    }
+    .location-strip a {
+      color: var(--gold); text-decoration: none; font-weight: 600;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+      padding: 28px 20px 16px;
+      display: flex; align-items: baseline; justify-content: space-between;
+    }
+    .section-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 600; color: var(--green-dark);
+    }
+    .section-head a {
+      font-size: 11px; color: var(--green-light);
+      text-decoration: none; letter-spacing: 1px; text-transform: uppercase;
+    }
+
+
+    /* ── CATEGORY PILLS ── */
+.categories {
+  display: flex; 
+  gap: 8px;
+  padding: 0 20px 20px;
+  overflow-x: auto;      /* បើកដំណើរការអូសឆ្វេងស្តាំ */
+  flex-wrap: nowrap;     /* បង្ខំឱ្យប៊ូតុងនៅជួរដេកតែមួយ មិនឱ្យធ្លាក់ជួរ (សំខាន់) */
+  scrollbar-width: none; /* លាក់ Scrollbar សម្រាប់ Firefox */
+  -webkit-overflow-scrolling: touch; /* ធ្វើឱ្យការអូសលើទូរស័ព្ទរលូន */
+}
+
+.categories::-webkit-scrollbar { 
+  display: none;         /* លាក់ Scrollbar សម្រាប់ Chrome/Safari */
+}
+
+.cat-pill {
+  flex: 0 0 auto;        /* បញ្ឈប់ប៊ូតុងមិនឱ្យរួមតូច (នេះជាចំណុចដែលធ្វើឱ្យវាមិនដើរ) */
+  white-space: nowrap;   /* ការពារអក្សរកុំឱ្យធ្លាក់ជួរក្នុងប៊ូតុង */
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px; 
+  font-weight: 600;
+  cursor: pointer; 
+  transition: all .2s;
+  border: 1.5px solid var(--cream-dark);
+  background: transparent; 
+  color: var(--text);
+  font-family: 'Kantumruy Pro', sans-serif; /* ប្រើ Font ខ្មែរដែលអ្នកចង់បាន */
+}
+
+.cat-pill.active, .cat-pill:hover {
+  background: var(--green); 
+  color: var(--cream);
+  border-color: var(--green);
+}
+    /* ── PRODUCT GRID ── */
+    .products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px; padding: 0 16px 20px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+    .product-img {
+      width: 100%; aspect-ratio: 1;
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 38px; position: relative;
+    }
+    .product-badge {
+      position: absolute; top: 8px; left: 8px;
+      background: var(--gold); color: var(--green-dark);
+      font-size: 9px; font-weight: 700;
+      padding: 3px 8px; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: .5px;
+      font-family: sans-serif;
+    }
+    .product-badge.new { background: var(--green); color: var(--cream); }
+    .product-info { padding: 10px 12px 12px; }
+    .product-name {
+      font-size: 13px; font-weight: 600;
+      color: var(--text); margin-bottom: 2px; line-height: 1.3;
+    }
+    .product-name-km {
+      font-size: 11px; color: var(--green-light); margin-bottom: 6px;
+    }
+    .product-price-row {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 600;
+      color: var(--green-dark);
+    }
+    .product-price small { font-size: 11px; font-family: 'Kantumruy Pro', sans-serif; }
+    .add-btn {
+      background: var(--green); color: var(--cream);
+      border: none; width: 26px; height: 26px;
+      border-radius: 50%; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .2s;
+    }
+    .add-btn:hover { background: var(--green-dark); }
+
+    /* ── FEATURED BANNER ── */
+    .featured-banner {
+      margin: 4px 16px 24px;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      border-radius: 12px;
+      padding: 24px 20px;
+      position: relative; overflow: hidden;
+    }
+    .featured-banner::after {
+      content: 'CG';
+      position: absolute; right: -10px; bottom: -20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 110px; color: rgba(255,255,255,.05);
+      font-weight: 600; line-height: 1;
+    }
+    .featured-banner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; color: var(--cream);
+      margin-bottom: 6px; font-weight: 400;
+    }
+    .featured-banner p { font-size: 12px; color: rgba(240,235,224,.7); margin-bottom: 14px; }
+    .featured-banner .btn-primary { flex: none; display: inline-block; padding: 10px 20px; }
+
+    /* ── MAP SECTION ── */
+    .map-section {
+      padding: 0 16px 28px;
+    }
+    .map-box {
+      background: var(--cream);
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--cream-dark);
+    }
+    .map-placeholder {
+      height: 160px;
+      background: linear-gradient(135deg, #c8d8c9 0%, #a8bfaa 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; position: relative;
+    }
+    .map-placeholder::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='1'%3E%3Cpath d='M0 20h40M20 0v40'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .map-info { padding: 14px 16px; }
+    .map-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .map-info p { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.5; }
+    .map-info a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green); color: var(--cream);
+      text-decoration: none; font-size: 12px; font-weight: 600;
+      padding: 9px 16px; border-radius: 6px; transition: background .2s;
+    }
+    .map-info a:hover { background: var(--green-dark); }
+
+    /* ── CONTACT / SOCIAL ── */
+    .contact-section {
+      background: var(--cream); padding: 24px 20px; margin-bottom: 0;
+    }
+    .contact-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; margin-bottom: 16px; color: var(--green-dark);
+    }
+    .contact-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .contact-row {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--white); padding: 12px 14px; border-radius: 8px;
+    }
+    .contact-icon { font-size: 18px; width: 24px; text-align: center; }
+    .contact-label { font-size: 11px; color: #888; }
+    .contact-val { font-size: 13px; font-weight: 600; color: var(--text); }
+    .social-row { display: flex; gap: 10px; }
+    .social-btn {
+      flex: 1; padding: 11px 8px;
+      border: none; border-radius: 8px;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 12px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: center; gap: 6px; transition: opacity .2s;
+    }
+    .social-btn:hover { opacity: .85; }
+    .fb { background: #1877f2; color: #fff; }
+    .tg { background: #229ed9; color: #fff; }
+    .wa { background: #25d366; color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark);
+      text-align: center; padding: 20px;
+    }
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; color: var(--cream); letter-spacing: -1px;
+    }
+    footer p {
+      font-size: 11px; color: rgba(240,235,224,.5);
+      margin-top: 8px; letter-spacing: 1px;
+    }
+
+    /* ── CART TOAST ── */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(60px);
+      background: var(--green-dark); color: var(--cream);
+      padding: 12px 22px; border-radius: 30px;
+      font-size: 13px; font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0,0,0,.3);
+      transition: transform .3s; z-index: 999;
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%; max-width: 430px;
+      background: var(--white);
+      border-top: 1px solid var(--cream-dark);
+      display: flex; padding: 8px 0 14px;
+      z-index: 100;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+    }
+    .bnav-btn {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; gap: 3px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-size: 10px; color: #888; transition: color .2s;
+    }
+    .bnav-btn span { font-size: 22px; }
+    .bnav-btn.active { color: var(--green); }
+
+    /* spacing for bottom nav */
+    .page-bottom-pad { height: 80px; }
+
+    .music-control {
+  position: fixed;
+  bottom: 90px; /* នៅពីលើ Bottom Nav បន្តិច */
+  right: 20px;
+  z-index: 1000;
+}
+
+#musicBtn {
+  background: var(--green);
+  color: var(--cream);
+  border: 2px solid var(--gold);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#musicBtn.muted {
+  background: #888;
+  border-color: #ccc;
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <span class="nav-monogram">CG</span>
+      <div class="nav-divider"></div>
+      <span class="nav-name">Clover Ge</span>
+    </div>
+    <div class="nav-icons">
+      <button onclick="openSearch()" title="ស្វែងរក">🔍</button>
+      <button onclick="openCart()" title="កន្ត្រក" style="position:relative">
+        🛒<span class="cart-badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">📍 Pursat, Cambodia</div>
+    <h1>ហាងគ្រប់មុខទំនិញ</h1>
+    <p>ផលិតផលប្រចាំថ្ងៃ ទំនិញស្រស់ថ្មី<br/>ជ្រើសរើស និងប្រគល់ផ្ទះដោយលឿន</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToProducts()">🛍️ ចូលមើលទំនិញ</button>
+      <button class="btn-outline" onclick="openMap()">📍 ទីតាំង</button>
+    </div>
+  </section>
+
+  <!-- LOCATION STRIP -->
+  <div class="location-strip">
+    <span>📍</span>
+    <span>ខេត្ត​ ពោធិ៍សាត់ ·</span>
+    <a href="https://maps.app.goo.gl/rfcKcGqARSgBRaQ27" target="_blank">Google Maps</a>
+  </div>
+  <!-- ប៊ូតុងបិទ/បើកសំឡេង -->
+  <div class="music-control">
+  <button id="musicBtn" onclick="toggleMusic()">🔊</button>
+  <audio id="bgMusic" loop autoplay>
+    <source src="vito.mp3" type="audio/mpeg">
+  </audio>
+</div>
+  <!-- CATEGORIES -->
+  <div class="section-head">
+    <h2>ផលិតផល</h2>
+    <a href="#">មើលទាំងអស់</a>
+  </div>
+  <div class="categories" id="catRow">
+    <button class="cat-pill active" onclick="filterCat('all', this)">ទំនិញទាំងអស់</button>
+    <button class="cat-pill" onclick="filterCat('food', this)">🍱 អាហារ</button>
+    <button class="cat-pill" onclick="filterCat('beauty', this)">💄 សម្អាង</button>
+    <button class="cat-pill" onclick="filterCat('home', this)">🏠 គ្រឿងផ្ទះ</button>
+    <button class="cat-pill" onclick="filterCat('fashion', this)">👗 សម្លៀក</button>
+    <button class="cat-pill" onclick="filterCat('health', this)">💊 សុខភាព</button>
+    <button class="cat-pill" onclick="filterCat('drink', this)">🥤 ភេសជ្ជៈ</button>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <div class="products" id="productGrid"></div>
+
+  <!-- FEATURED BANNER -->
+  <div class="featured-banner">
+    <h3>ទំនិញថ្មី<br/>មកដល់ប្រចាំសប្ដាហ៍</h3>
+    <p>ជូនដំណឹងពីទំនិញបន្ថែមរៀងរាល់សប្ដាហ៍<br/>ដើម្បីរក្សាទំនិញល្អ ថ្ងៃជ្រើស</p>
+    <button class="btn-primary" onclick="showToast('📲 ជ្រើស Telegram ដើម្បីទទួលព័ត៌មាន!')">ទំនាក់ទំនង</button>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section" id="mapSection">
+    <div class="section-head" style="padding-left:0;padding-right:0">
+      <h2>ទីតាំងហាង</h2>
+    </div>
+    <div class="map-box">
+      <div class="map-placeholder">🗺️</div>
+      <div class="map-info">
+        <h4>Clover Ge — ខេត្ត​ ពោធិ៍សាត់</h4>
+        <p>ពោធិ៍ព្រឹក · ខេត្ត​ ពោធិ៍សាត់<br/>បើក: ម៉ោង 7:00 – 20:00 ជារៀងរាល់ថ្ងៃ</p>
+        <a href="https://maps.app.goo.gl/rfcKcGqARSgBRaQ27" target="_blank">
+          📍 បើក Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>ទំនាក់ទំនង</h2>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <span class="contact-icon">📞</span>
+        <div>
+          <div class="contact-label">លេខទូរស័ព្ទ</div>
+          <div class="contact-val">+855 0969102747</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">📍</span>
+        <div>
+          <div class="contact-label">អាសយដ្ឋាន</div>
+          <div class="contact-val">ខេត្ត ពោធិ៍សាត់, Cambodia</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="contact-icon">⏰</span>
+        <div>
+          <div class="contact-label">ម៉ោងបើកដំណើរការ</div>
+          <div class="contact-val">07:00 – 20:00 ជារៀងរាល់ថ្ងៃ</div>
+        </div>
+      </div>
+    </div>
+    <div class="social-row">
+      <button class="social-btn fb">📘 Facebook</button>
+      <button class="social-btn tg">✈️ Telegram</button>
+      <button class="social-btn wa">💬 WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">CG</div>
+    <p>CLOVER GE · ខេត្ត​ ពោធិ៍សាត់ · © 2025</p>
+  </footer>
+
+  <div class="page-bottom-pad"></div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="bnav-btn active" onclick="scrollToTop()"><span>🏠</span>ទំព័រដើម</button>
+    <button class="bnav-btn" onclick="scrollToProducts()"><span>🛍️</span>ទំនិញ</button>
+    <button class="bnav-btn" onclick="openSearch()"><span>🔍</span>ស្វែងរក</button>
+    <button class="bnav-btn" onclick="openMap()"><span>📍</span>ទីតាំង</button>
+    <button class="bnav-btn" onclick="openCart()"><span>🛒</span>កន្ត្រក</button>
+  </nav>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ── PRODUCT DATA ──
+    const products = [
+  { id:1, name:'ម្សៅ​លក់ | Rice Flour', km:'ម្សៅ​អង្ករ', price:'$1.50', cat:'food', img:'ride.png', badge:'ពេញនិយម' },
+  { id:2, name:'គ្រឿងទេស Mix', km:'គ្រឿងទេសសម្រស់', price:'$3.00', cat:'food', img:'https://images.unsplash.com/photo-1532336414038-cf19250c5757?q=80&w=200&auto=format&fit=crop', badge:'new' },
+  { id:3, name:'Skin Cream', km:'គ្រឿងលាបខ្លួន', price:'$5.50', cat:'beauty', img:'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=200&auto=format&fit=crop', badge:'' },
+  { id:4, name:'ផ្កាឈូក Soap', km:'សាប៊ូផ្កា', price:'$2.00', cat:'beauty', img:'https://images.unsplash.com/photo-1605264964528-06403738d6dc?q=80&w=200&auto=format&fit=crop', badge:'new' },
+  { id:5, name:'Pillow Cover', km:'គ្របខ្នើយ', price:'$4.00', cat:'home', img:'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=200&auto=format&fit=crop', badge:'' },
+  { id:6, name:'ចានថ្ម | Plate Set', km:'ចានមុខ​ ២', price:'$6.00', cat:'home', img:'jan.png', badge:'ពេញនិយម' },
+  { id:7, name:'ខ្នប Scarf', km:'ខ្នប​ ផ្លូវ', price:'$7.00', cat:'fashion', img:'https://b3355779.smushcdn.com/3355779/wp-content/uploads/2023/06/phnompehnred_new_1.jpg?lossy=2&strip=1&webp=1', badge:'' },
+  { id:8, name:'Vitamin C', km:'វីតាមីន C', price:'$8.50', cat:'health', img:'c.png', badge:'new' },
+  { id:9, name:'Herbal Tea', km:'តែ​ ប្រភព​ ធម្មជាតិ', price:'$3.50', cat:'drink', img:'https://scitechdaily.com/images/Pouring-Herbal-Tea.jpg', badge:'ពេញនិយម' },
+  { id:10, name:'Coconut Water', km:'ទឹក​ ដូង', price:'$1.00', cat:'drink', img:'https://vitacoco.com/cdn/shop/files/VC_Original_500mL_PDP_02.jpg?v=1756996885&width=1500', badge:'' },
+  { id:11, name:'Shampoo Natural', km:'ស្រេ​ ឆ្នាំង​ ធម្មជាតិ', price:'$4.50', cat:'beauty', img:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxATEBMQEhAQEBAPFxUPEA8QEA8QDxAQFRYWFxcVFRUYHSggGBomGxUXITEhJSkrLi4uGB8zODMtNyguLisBCgoKDg0OGhAQGy4lHSUtLS0rLjcrMC0wKy0tLS0tLS0tKy4uKy0vLSsrLS8rLS0rNTctLS0tLy0rKystKy0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAgMEBQEGB//EADwQAAEDAgMFBgUCBAYDAQAAAAEAAhEDIQQSMQUiQVFxEzJhgZGhQlKxwfAUIwZD0eEkYnKSsvE0goMV/8QAGgEBAQEBAQEBAAAAAAAAAAAAAAECAwQFBv/EAC8RAQEAAgECBAQEBgMAAAAAAAABAhEDEiEEMUFRYaHR8AUTkeFCUoGSweIUIiP/2gAMAwEAAhEDEQA/AP2RERGhERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARF6gi5wGpA6mFHtm/MPVc2czied1pboibaO3Z8wTt2fMFmaw6I6ieahtq7dvzBeio3mPULn1B/dRhU26iLFgjvEcCJ8wtqKIihX7p9EEsw5j1CZhzHqo0WWXr2qbHuccx6hM45j1CoqOhV9sE2ba845j1C8NVvzN9QqKYzFK9OybGkEG4MjmNEWPZndcOTvqAtioIiICIiAiIgIiICIiAoV3Q1x8CpqjGnc6kD7/ZBhohamhQw9E9FtZTHVRlWwKFYlaT+aKtyK57ivFre3wWeo0dEEJI0JHRbsJUJbe5Flz5WvZ5sR0P56KrGtV4jQeJCsVVfh1QXUxZKgUc9lU+oeRPkoirElY+0utNUOPw+4VHYu+X3aiVtwQ4q6sLLDTe4fCfr9FacUONlFZA8tcYJGhXWaZE87rj1Hb/ULqYYyxvSPSy0sWIiICIiAiIgIiICIiAqMU0nKPGfT/tXquod7y+v/AEhRjYVgKgF6oy9cVWSsG3se6lSmm0Pq1HNo0mnQ1HmBK4+IbtDC0Ti69dlQNcBUw2RsFjnBsteIg30hc8uSY3yeri8LlyY73Ju6kvnb8Prez6QlQcpNcCARoRI6FQcF0eZkrAC60YB28fESqa69wB3m+Y+qsWOoq6moViqcd7ySi8BVPVqpqFRFTnKsuVeNxTKbHVHuDWNu5x/LnwXFwf8AFGHqODQKrA52RlSozLSe/wCUOBMHwMLNzxl1a64cHJnjcscbZHfa9eVHSq16tOTLUEOC6WBO70JXOxPA+IW7Z57w6FUjWiIiiIiAiIgIiICIiAqnd4+StVLu8fJCpBZ8fj6dENdUOVr3tp5iQAHOmJJ6R1IWgLHtV7Gik5wqEtqtLG025nOqQ4ARyub2hZZZdq/p8RQI7dgYSxzazHtIY8wabgQeMiOcrgiocSG0a+0sJWoU/wB09m9gqVGNaXb5sA3LvTe1/FXdjh3SG1sSKdWo2pVApMytrurvLGPcWy12c5Mo0ytmJl3lOnh69APc6vSIZSxhbDS5gdQqYZhBLYOjnaagWgws5ceOV3Xo4vE8nHNY/wBO07X4ezuHbOFAb/iKAzyGDtGCcpAMCeBc0HlI5rYV8hiquEaK769ev/jWV2Pe9lGmOyyUqVR7GwLN7NsTJMmA4afXlbcGWsFHCGC3wP3U6ypo6easWO0qSd8+SvWd3fPkpRoJVLlauVtqhUeaAY57Iqy+pTDC5jOxrCYcC3UgXBuQiMH8WUHOoscKfato1adapRH82m2czY46z5Ll7d25hsVhW4PB0yKlR7SaQpdmKLQcxcYGXvaweJWt+OxoY5pZUNbMOyc2gSw0gwAlxAyhxe1xg33hFtKC7HNzOa99UF+QftUL0ThxVNUZQMzhVzMbeDYEE7y5ZcfVb38/N7OHxU45N47uN3O+pv4z1+T6MDz8ea9XzPb40isWGvloNe/DmpQpMfi3BlN7WvaWAgFznsgBh3Rpx+nK6vGyYzRbMAd4jmPuseO0WrBHfHQqkdBERFEREBERAREQEREBUv7x8lcqave8v6oVIKFai12UuE5CKjbkQ4AifQlU4rDl8Q4iA7QuG8Yg26H1VL8OW3NQAXyy50gZnENAmDYgeXSOOWeUvl2bxwxs8+6qpsTDEh2Q95tUAVawY6oKprNc5odleRUJcJBjoou2DhyAMtQBsgAV8Q0FpdnDCA+7AdGmzZIAAMKQpCQ7tGkS1wl5uWxPSx8deCUWiWl1VpawNBh5vlDhJvqSQfJSct35fNq8U9/klU2fQIYbtDJ7NzKtWmYeQS3M1wLmkgWMgwFrKwtpQRNRm6KbS7OZ3S0ukeOU/kqFXDPa0AZn2AIzuEuykF0k84/Lqfm5ex+Vj7r65VVPT1UqsxfWBJ8V4wWC7xyjshUvG95BXKupqFaLFztqYR1TsmhzmsbUzVclSpSc6mKdQRLCCd8stPBS2lj30yxrKbamZrnkuqFgAa+kyLNdMmrP/qVgq7adduRrXAPBb2k1Mze0lzGlu8wFneMa6Wg4uUizC3uwf/m4sFm852V9ICocXXGTDtfFRjmfzHmnm3zclwuCxpNGA2ZiqNGnRbcNo4fD/wDkPim+jUealQZpMPY4QBpkDTAiOi7bDjUDA2mAKjabyasnK5r4mGw1xcGgAmSTHGV7h9rdo5jWNacwaXntDuEtLnNs07wiIMeSdUW8eTn1dkYmKQbVqAw7tT+orFzaxc0h4zGHAAEZSCBplIJX0a4mH2wXZRuSG0HOioDVmpkJBZl5OuRzbztN22nNZmfTpsOUVL1iKcFmYNDizvm4DYvBM8E64fl5N2MFlowffHn9CqKzpAPAwfIq/B98ef0W4zHRREQEREBERAREQEREBV1+Hp+eisUKwt6IIhVVqZcLtFr9/wDsrApFYs2S6c6o1pnu70TFXXKBHDhChVuWxAIJcIfwIjl4hTxppMbvC3dAl0m8xHG6wNx1FzjIcJk5jZtxfQ2leLl8TxceXTnlJfv4PVhx55zqxl19/FvYwWiLTlippOsW8VcJiIAAsIMqNGm3UDprwED2Vj168J228+eW2LEFWUxcDoFVV181pwol49fRdYzHTVdXh1U1CrogsbouftXtC2KbtZBgsGogEuNxF9L9NV0GaLO/DU/kZ/tb/RZpLquXijiBmDHZogU3E0RMxmNSw0ndyjhdV1nVwQM7nhziJHY5mgZyNQBeGTPktWMw7p/bZRiPibfNfw0091kqYSrwFH4Y3YHAum2mo6LLe58AuxF78TOU0v8ANGSfh7s5r8ltq0GVAA9rXxw1FxB8jy4qFDDjKMzKea+jW6SY4axE+Mq9lNo0aBOsABakZtZ62oWjADe6D+izv1WvZ7dT0C0kbEREBERAREQEREBERAXlTQr1eO0PRBU1SUWrDtjAOrUjTFV1KTJc0TmF90i1vPgs5bk7MW3XZyttPmrzEWvINzcfnBZBQBLQ2XlwktAMgybeOiqbh+yqfpN+plAqB4aJBebw2e556g84W1+FcILCAW9WSRo5pNp0kE6zEr8l4nw3LeXPK47m32vCeKwz45N6s7WNWGrupllJzd4w3WYDtPYi3gumTaed1wqFJ2ftajgI0JcHX4EumLctdFurYlzt1ssB0JH7jh/kYdP9ToAX1vw7lzx47171/DPXX3615/FcUuU6fP1vpv79k3d4LbgBvE8gsLWxlF7CLmTpxPFdHZ47x6fdfZnk8LWo1dCpKNTQ9CiPaRR68oLn7T29g6MmtisPTjg6qwO/2zJ9Fkkt8mmq6L8Br0VQcCbGdfD81XPwW3GVwX02VXUSQ1lV1N1JryflneLbi8RfwKzbQwLqn7IDwHggkVOzcWa5Q4HMOUjSQuWXJq9nSYe7s1CAOfHrzHqjCSATYnUawV84zaVPDYcHD7OxbSx3ZPwjcPUOWcxNRsbrhI7wN819Vdh/4lqEsYcFjG5zAFRlNhAi7oLpgdOKTK77nRudnUfqV0MCNzqSfsue7W4g2kawunhhuN6Lu5xYiIgIiICIiAiIgIiIC8doV6vH6HoUHL2p2sMNJ4YQTMgEOFrFZG47FjWlSqeLXFh911qrbBUvYYMa8J0lfO55nOS3HKz79r2evizx6JMsZfv3ndzhjKmbMcJvRlzCpTJyzMTylWPxNV38rL1rBv8AxBKvLXx8Ez4xH9VANqTfLHnK5dfL/Nf0n0b6eLzmM/W/VQygZkkA82iX9M7pP0WinDQcrYnUkkk9SbleNa+b5Y8JkqzKpJlUys9VTu8F0cB3T1+wXPqahdHAd3zP0C+u8UaF5U0PQr1eP0PQoONtuthi0UMQHmm8te4NG44NM5Xj4mmII4qrAYbZTCHUaOCpO4FtCjRf/wAQVr2lhg4tJ5R6H+65r8LQzZSBmtqOel4XG5arvjjhcfVVisDVxOLz1anZ4TDuY6jSp1RmxNRu8Kj3NO6wE92xOXlr2K+Ia3iOcl7GgHqSuSzDYY6NZbnPATx8LqbewbcCm2NYaA4R5SszORbjLr6NX6h7+6ZnjSGef/o4Bg91OlhmiS5zRPeAcXOd/rebkeAgdVQ7EM4u9ZVggiRobjolztTWvJc83XUojdb0H0XKI4cl1qeg6Bd55OD1ERUEREBERAREQEREBRqGxUlCtogriyqq5hENnn7fnkrgQBJIAGpNgFRWq0nCDUZw+Jh06rz8sm3Tj2pD3kAhnORPi3Q+Z9F5mefgHmSD8XpoB5o6lQP81o1sKjAJdqeqZKPCq0XmM9OBaLcuq8/Tff5u/b2+VQl9929oi8CLytBYqWNpAg9q21wM1OOPAdVf2zDYOaTyDgSt8ePfvXPkvtGWtqFvwHdPX7Bc/E6hbtnmzvIr2uEa1GpoVJRq6fnNBTiW7rfC356LFWytGZ2URbM6BEkAX6x7LpVRu9FirsOUwA4jeaDYFwu33AXLKNY1idWoiDmpxOWd0gG7rnh3T6KFSph/idRtcklljrJ+qp/TVW2bSpOa4ixhuRmSCO+dS5+htJ1leMw1UWNKmQ6c8aRdrRBd8vI2DtDC593Xt7rxiaLp3muhzW8DvOgiPX2PIrVlXOo4eoXtL6LQJkkZRBAMGA83nrraJK6kKyM5XXkqcd4rrUu6Og+i5Du8urhjuN6L0OU8liIiAiIgIiICIiAiIgKqsrVTU1QqrEUs1J7Pma5vqCF8O3A1JE03xx3bxxX3zFILweM8F/yLLvWvhv8AzHr8L4zLglkm9vjBhy0btNxIEAmnvXuZtBvHupOw5zWbDRp+xJIIggnzK+qxFaAQDBHoPyfy6rFR8HeEjUkHiBELyXwFnbrn9v8As9M8dle/T8/2fJ1sE5w7twDAbRLZPKfIeq2/w5g3tqOc5hbDcoJEXJH9F9M0yqyuvB+HdHJM7lvXw/eufL+IZZ8dw15sWI7y1bPNyOY+iy1u+VdhXQ8enqvqvnR0lCroOqmq6puEVY4WXLdiCJmBGq6jtFzMRgyXSKrmA8A1hE+YWK3x3H1YKu1SCcrWOEgZ+0YGxFzrwJAjxXjdovInI0aEE1WZSCTeeglMRs5rACXugWAFKkYNogRrYD0Wc4ellB7Uht8sUqcRum0DTun05LHd3/8AP7224fFl3eaGHQNLmuJtPArS1ywt2dBkVCCNDkp8fJahYATJGptc87LWMvq5clw1/wBXlQ3C6eBO50JH3+65Nc2B5XXR2e7UdCujjGxERFEREBERAREQERAUBUFXkrOEKmxeqLVJERIHK/ReEDwU1EqaNoRw/solTKiVRgf3ipgxB5XVc7x6q0iyEdWVVUO8OilhzLW9Poq3Hf8ARKq5+izPK0VNFkeVEY8VhXOn9wgHQAaWA53FuI4nqq34c70PjNcS3NlPGJ5rW4rO96nSvVXjCQIJzHnEKOZRJUZVZTrd1bNnv3h/mH2lY6vdCuwTu4en1hIsdhERVRERAREQEREBERB47Q9FSFes+IOW/A2Qr2YU1k/UBesxAHRE00rwqArt5rw1W80RIqnEVIHibBKmIA0krI8kmSivKTVoIsqm2Xpci6b8EdzoSPv91W537h8voF7s/unr9lVizD56INrrhY3leNxXgoVKoN/ZREHlZnlSqVxzWapiG8wjKRKM5Kjtp0BPQSptbU4MP+pxAHpr7IuluIercIdwef1VTMKfiI6Nn6rUArpqR2AbTzRQod1vQfRTQEREBERAREQEREBRqMBEFSRBiOBPzD0UTgnc2+63oiuccI/kPUKJw7/lPsumiDmjDP8AlPsF6MI/l7hdFEGD9G7w9VJuBPFw8ltRBGmwAQNFCvQDvAjQq1ERi/RHmPdRODd4eq3oiua7CO4tB9CofpD8nsF1UQc0YZ/y+4UhhH8h6roIgwDBO5t9SrKeC+Yz4Ba0QEREQREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH//2Q==', badge:'' },
+  { id:12, name:'អង្ករ​ ខ្មែរ | Jasmine Rice', km:'អង្ករ​ ម្លិះ', price:'$2.50', cat:'food', img:'https://signaturerice.com/wp-content/uploads/2023/05/JWM4720-removebg-preview.png', badge:'ពេញនិយម' },
+];
+
+    let cart = 0;
+    let currentCat = 'all';
+
+    // ចំណុចកែសម្រួលសម្រាប់ Music
+window.onload = function() {
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+
+    if (music && btn) {
+        // បង្កើត Function សកលសម្រាប់ប៊ូតុងចុចបិទបើកដោយដៃ
+        window.toggleMusic = function() {
+            if (music.paused) {
+                playAudio();
+            } else {
+                pauseAudio();
+            }
+        };
+
+        function playAudio() {
+            music.play().then(() => {
+                btn.innerHTML = "🔊";
+                btn.classList.remove('muted');
+            }).catch(e => console.log("Autoplay is waiting for interaction..."));
+        }
+
+        function pauseAudio() {
+            music.pause();
+            btn.innerHTML = "🔈";
+            btn.classList.add('muted');
+        }
+
+        // យុទ្ធសាស្ត្រ "ចាក់ភ្លាមពេលប៉ះ"៖ ឱ្យតែ User ប៉ះ អូស ឬចុចលើ Web វានឹងចាក់ភ្លាម
+        const startAudio = () => {
+            if (music.paused && !btn.classList.contains('muted')) {
+                playAudio();
+            }
+            // នៅពេលចាក់ហើយ ត្រូវលុប Event ទាំងនេះចេញវិញដើម្បីកុំឱ្យវាហៅមកប្រើជាន់គ្នា
+            ['click', 'touchstart', 'scroll', 'mousedown'].forEach(event => {
+                document.removeEventListener(event, startAudio);
+            });
+        };
+
+        // ដាក់ឱ្យតាមដានសកម្មភាពគ្រប់ប្រភេទលើអេក្រង់
+        ['click', 'touchstart', 'scroll', 'mousedown'].forEach(event => {
+            document.addEventListener(event, startAudio, { once: true });
+        });
+    }
+};
+
+    function renderProducts(cat) {
+  const grid = document.getElementById('productGrid');
+  const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+  
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" onclick="addToCart('${p.name}')">
+      <div class="product-img">
+        <img src="${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;">
+        ${p.badge ? `<span class="product-badge ${p.badge==='new'?'new':''}">${p.badge}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-name-km">${p.km}</div>
+        <div class="product-price-row">
+          <span class="product-price">${p.price}</span>
+          <button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.name}')">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+    function filterCat(cat, btn) {
+      currentCat = cat;
+      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProducts(cat);
+    }
+
+    function addToCart(name) {
+      cart++;
+      document.getElementById('cartCount').textContent = cart;
+      showToast(`✅ បានបន្ថែម: ${name}`);
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function scrollToProducts() {
+      document.getElementById('productGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function openMap() {
+      document.getElementById('mapSection').scrollIntoView({ behavior: 'smooth' });
+    }
+    function openCart() { showToast(`🛒 កន្ត្រក: ${cart} ផលិតផល`); }
+    function openSearch() { showToast('🔍 មុខងារស្វែងរក — នឹងមកដល់ឆាប់ៗ!'); }
+
+    // Init
+    renderProducts('all');
+
+    
+
+
+  </script>
+</body>
+</html>
